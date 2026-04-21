@@ -4,6 +4,7 @@ import com.colegio.asistencia.model.Estudiante;
 import com.colegio.asistencia.repository.EstudianteRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EstudianteService {
@@ -20,5 +21,9 @@ public class EstudianteService {
 
     public List<Estudiante> listarTodos() {
         return repository.findAll();
+    }
+
+    public Optional<Estudiante> obtenerPorId(Long id) {
+        return repository.findById(id);
     }
 }

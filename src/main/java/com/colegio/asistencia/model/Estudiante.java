@@ -29,4 +29,14 @@ public class Estudiante {
 
     public Long getCursoId() { return cursoId; }
     public void setCursoId(Long cursoId) { this.cursoId = cursoId; }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "idAlumno=" + idAlumno +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", cursoId=" + cursoId +
+                '}';
+    }
 }

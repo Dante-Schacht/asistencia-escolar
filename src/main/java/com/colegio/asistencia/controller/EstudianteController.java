@@ -2,6 +2,7 @@ package com.colegio.asistencia.controller;
 
 import com.colegio.asistencia.model.Estudiante;
 import com.colegio.asistencia.service.EstudianteService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -23,5 +24,12 @@ public class EstudianteController {
     @GetMapping("/todos")
     public List<Estudiante> verTodos() {
         return service.listarTodos();
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerPorId(@PathVariable Long id) {
+        return service.obtenerPorId(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
     }
 }
