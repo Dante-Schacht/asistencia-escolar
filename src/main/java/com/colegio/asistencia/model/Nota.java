@@ -1,32 +1,33 @@
 package com.colegio.asistencia.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Table(name = "notas")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Nota {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_nota")
+    private Long idNota;
 
-    @Column(name = "estudiante_id")
-    private Long estudianteId;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
 
+    @Column(name = "materia", nullable = false)
     private String materia;
 
+    @Column(name = "calificacion", nullable = false)
     private Double calificacion;
 
-    // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-
-    public Long getEstudianteId() { return estudianteId; }
-    public void setEstudianteId(Long estudianteId) { this.estudianteId = estudianteId; }
-
-    public String getMateria() { return materia; }
-    public void setMateria(String materia) { this.materia = materia; }
-
-    public Double getCalificacion() { return calificacion; }
-    public void setCalificacion(Double calificacion) { this.calificacion = calificacion; }
+    @Column(name = "estudiante_id", nullable = false)
+    private Long estudianteId;
 }

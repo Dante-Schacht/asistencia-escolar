@@ -5,6 +5,7 @@ import com.colegio.asistencia.service.AsistenciaService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/asistencia")
 public class AsistenciaController {

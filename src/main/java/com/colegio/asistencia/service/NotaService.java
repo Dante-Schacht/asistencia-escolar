@@ -18,6 +18,10 @@ public class NotaService {
         return repository.save(nota);
     }
 
+    public List<Nota> obtenerTodas() {
+        return repository.findAll();
+    }
+
     public List<Nota> obtenerNotasPorEstudiante(Long estudianteId) {
         return repository.findByEstudianteId(estudianteId);
     }

@@ -1,41 +1,37 @@
 package com.colegio.asistencia.model;
 
-import jakarta.persistence.*;
-import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "asistencias")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Asistencia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_asistencia")
+    private Long idAsistencia;
 
-    @Column(name = "estudiante_id")
-    private Long estudianteId;
-
-    @Column(name = "curso_id")
-    private Long cursoId;
-
+    @Column(name = "fecha", nullable = false)
     @JsonFormat(pattern = "dd-MM-yyyy")
     private LocalDate fecha;
 
+    @Column(name = "estado", nullable = false)
     private String estado;
 
-    // Getters y Setters
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+    @Column(name = "estudiante_id", nullable = false)
+    private Long estudianteId;
 
-    public Long getEstudianteId() { return estudianteId; }
-    public void setEstudianteId(Long estudianteId) { this.estudianteId = estudianteId; }
-
-    public Long getCursoId() { return cursoId; }
-    public void setCursoId(Long cursoId) { this.cursoId = cursoId; }
-
-    public LocalDate getFecha() { return fecha; }
-    public void setFecha(LocalDate fecha) { this.fecha = fecha; }
-
-    public String getEstado() { return estado; }
-    public void setEstado(String estado) { this.estado = estado; }
+    @Column(name = "curso_id", nullable = false)
+    private Long cursoId;
 }

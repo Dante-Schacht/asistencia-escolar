@@ -5,6 +5,7 @@ import com.colegio.asistencia.service.NotaService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/api/notas")
 public class NotaController {
@@ -18,6 +19,11 @@ public class NotaController {
     @PostMapping("/registrar")
     public Nota registrar(@RequestBody Nota nota) {
         return service.guardarNota(nota);
+    }
+
+    @GetMapping("/todas")
+    public List<Nota> obtenerTodas() {
+        return service.obtenerTodas();
     }
 
     @GetMapping("/estudiante/{estudianteId}")
