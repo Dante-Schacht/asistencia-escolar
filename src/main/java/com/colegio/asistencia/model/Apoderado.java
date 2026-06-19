@@ -7,17 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "estudiantes")
+@Table(name = "apoderados_registro")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Estudiante {
+public class Apoderado {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_alumno")
-    private Long idAlumno;
+    @Column(name = "id_apoderado")
+    private Long idApoderado;
 
     @Column(name = "rut", unique = true)
     private String rut;
@@ -28,6 +28,12 @@ public class Estudiante {
     @Column(name = "apellido", nullable = false)
     private String apellido;
 
-    @Column(name = "curso_id", nullable = false)
-    private Long cursoId;
+    @Column(name = "telefono")
+    private String telefono;
+
+    @Column(name = "correo")
+    private String correo;
+
+    @Column(name = "estudiante_id", nullable = false)
+    private Long estudianteId;
 }

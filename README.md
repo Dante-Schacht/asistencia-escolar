@@ -5,21 +5,38 @@ Repositorio principal del sistema escolar.
 ## Componentes
 
 - `com.colegio.asistencia`: aplicación principal existente.
-- `com.colegio.comunicaciones`: módulo integrado de comunicaciones y mensajería.
+- `com.colegio.asistencia`: incluye asistencia, cursos, estudiantes, notas y comunicaciones.
 
-## Microservicio de comunicaciones
+## Comunicaciones
 
-El código del microservicio `ms-comunicaciones` quedó integrado en el árbol principal del repositorio bajo:
+La funcionalidad de comunicaciones quedó integrada directamente en la aplicación principal bajo:
 
-- [src/main/java/com/colegio/comunicaciones](src/main/java/com/colegio/comunicaciones)
-- [src/test/java/com/colegio/comunicaciones](src/test/java/com/colegio/comunicaciones)
-- [src/main/resources/application-comunicaciones.properties](src/main/resources/application-comunicaciones.properties)
+- [src/main/java/com/colegio/asistencia/model/Comunicacion.java](src/main/java/com/colegio/asistencia/model/Comunicacion.java)
+- [src/main/java/com/colegio/asistencia/repository/ComunicacionRepository.java](src/main/java/com/colegio/asistencia/repository/ComunicacionRepository.java)
+- [src/main/java/com/colegio/asistencia/service/ComunicacionService.java](src/main/java/com/colegio/asistencia/service/ComunicacionService.java)
+- [src/main/java/com/colegio/asistencia/controller/ComunicacionController.java](src/main/java/com/colegio/asistencia/controller/ComunicacionController.java)
 
 ### Ejecución
 
-Para levantar la aplicación de comunicaciones desde el IDE, ejecuta la clase [MsComunicacionesApplication](src/main/java/com/colegio/comunicaciones/MsComunicacionesApplication.java).
+Para levantar **todo el sistema** (asistencia + comunicaciones) desde el IDE, ejecuta la clase [AsistenciaApplication](src/main/java/com/colegio/asistencia/AsistenciaApplication.java).
 
-La configuración específica del módulo usa el archivo `application-comunicaciones.properties`.
+También puedes levantarla desde la raíz del proyecto con Maven:
+
+```powershell
+.\mvnw.cmd spring-boot:run
+```
+
+La aplicación integrada expone comunicaciones en el mismo proceso.
+
+### Endpoint de comunicaciones
+
+- `GET /api/comunicaciones/todas`
+- `POST /api/comunicaciones/registrar`
+- `GET /api/comunicaciones/{id}`
+- `GET /api/comunicaciones/curso/{cursoId}`
+- `GET /api/comunicaciones/estudiante/{estudianteId}`
+- `GET /api/comunicaciones/tipo/{tipo}`
+- `DELETE /api/comunicaciones/{id}`
 
 ### Pruebas
 
@@ -34,5 +51,5 @@ mvn test
 ### Base de datos
 
 ```sql
-CREATE DATABASE db_comunicaciones;
+CREATE DATABASE colegiodb;
 ```
